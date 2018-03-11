@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+    <script>
+        window.addEventListener('load', eventWindowLoaded, false);
+        function eventWindowLoaded() {
+            canvasApp();
+        }
+
+        function canvasApp() {
+            var theCanvas = document.getElementById('canvas');
+            var context = theCanvas.getContext('2d');
+            context.save();
+            context.fillStyle = "green";
+            context.translate(50, 50);
+            context.fillRect(0, 0, 50, 50);
+            context.restore();
+            context.save();
+            var angleInRadians = 5 * Math.PI / 180;
+            context.rotate(angleInRadians);
+            context.fillStyle = "red";
+            context.fillRect(100, 100, 50, 50);
+            context.restore();
+            context.save();
+            context.scale(0.5,1);
+            context.fillStyle = "yellow";
+            context.fillRect(150, 150, 50, 50);
+            context.restore();
+            context.save();
+            context.transform(1,0,0,1,0,0);
+            context.transform(1,0,1,1,50,0);
+            context.transform(1,0,1,1,0,50);
+            context.arc(225, 225, 25, (Math.PI / 180) * 0, (Math.PI / 180) * 360, false);
+            context.fill();
+            context.restore();
+        }
+    </script>
+<body>
+        <canvas id="canvas" width="500" height="500">
+        </canvas>
+</body>
+</html>
