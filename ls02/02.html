@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.addEventListener('load', eventWindowLoaded, false);
+        function eventWindowLoaded() {
+            canvasApp();
+        }
+        function canvasApp() {
+            var theCanvas = document.getElementById('canvas');
+            var context = theCanvas.getContext('2d');
+            console.log(context instanceof CanvasRenderingContext2D);
+            console.log(CanvasRenderingContext2D.prototype == context.__proto__);//
+            for (const key in context) {
+                const element = context[key];
+                if (context.hasOwnProperty(key)) {
+                    console.log("自身属性:", element);
+                } else {
+                    console.log("非自身属性:", element);
+                }
+            }
+            context.lineWidth = 20;
+            context.strokeStyle = "blue";
+            context.moveTo(0, 0);
+            context.lineTo(100, 100);
+            context.stroke();
+
+            context.lineWidth = 50;
+            context.strokeStyle = "#ff0000";
+            // context.beginPath();
+            context.moveTo(0, 100);
+            context.lineTo(100, 200);
+            context.stroke();
+            
+        }
+         
+    </script>
+
+</head>
+<body>
+    <canvas id="canvas" width="500" height="500" style="border:2px #ccc solid">
+    </canvas>
+</body>
+</html>
